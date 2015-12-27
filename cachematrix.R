@@ -34,7 +34,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## not have to run solve unless the data has changed.
 
 cacheSolve <- function(x, ...) {
-  if(length(x) > 1 || is.na(x$GetInv())){ ##the length condition is to supress
+  if(!(length(x) > 1) && is.na(x$GetInv())){ ##the length condition is to supress
                                           ##a warning that is.na generates for
                                           ##things with alength greater than 1
     x$SetInv(solve(x$Get(),...))
